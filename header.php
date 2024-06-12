@@ -6,7 +6,7 @@ foreach ($main_menu_items as $key => $value) {
 	if ($value->menu_item_parent == 0) {
 		$main_menu_arr[] = [
 			'ID' => $value->ID,
-			'title' => $value->post_title,
+			'title' => $value->title,
 			'url' => $value->url,
 			'items' => [],
 		];
@@ -46,6 +46,13 @@ foreach ($main_menu_arr as $key => $value) {
 				<div class="col-lg-10 col-md-9 col-sm-8 col-6">
 					<div class="h1 text-info"><?php echo $site_name; ?></div>
 					<div class="text-light"><?php echo get_bloginfo('description'); ?></div>
+					<div class="d-flex flex-wrap bg-light p-2">
+						<?php foreach ($main_menu_arr as $key => $value): ?>
+							<a href="<?php echo $value['url']; ?>" class="p-2 text-decoration-none">
+								<?php echo $value['title']; ?>
+							</a>
+						<?php endforeach ?>
+					</div>
 				</div>
 			</div>
 

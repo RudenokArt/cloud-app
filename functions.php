@@ -11,13 +11,6 @@ add_action( 'wp_enqueue_scripts', static function () {
 
 add_filter( 'show_admin_bar', '__return_false' );
 
-add_theme_support('title_tag');
-add_theme_support('menus');
-
-add_action('after_setup_theme', static function () {
-	include_once get_template_directory().'/php_core/Config.php';
-});
-
 add_action( 'edit_user_profile', static function ( $user) {
 	$company_id = get_the_author_meta('company_id', $user->ID);
 	include_once get_template_directory().'/components/customfield_user_company/index.php';
@@ -28,4 +21,7 @@ add_action('edit_user_profile_update', static function( $user) {
 
 add_action('after_setup_theme', static function () {
 	add_theme_support('custom-logo', []);
+	add_theme_support('title_tag');
+	add_theme_support('menus');
+	include_once get_template_directory().'/php_core/Config.php';
 });
